@@ -8,8 +8,10 @@ const app = express()
 
 // ROUTES
 app.get('/', (req, res) => {
-    res.send('Welcome to an Awesome App about Breads')
+    res.send('Welcome to an Awesome App about Breads. This is the initial server point')
   })
+//DEPENDENCIES
+let methodOverride = require('method-override')
 
 // MIDDLEWARE
 app.set('views', __dirname + '/views')
@@ -17,6 +19,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
 
 
   // Breads
