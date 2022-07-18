@@ -1,5 +1,8 @@
 // DEPENDENCIES
 const express = require('express')
+let mongoose = require('mongoose')
+
+
 
 // CONFIGURATION
 require('dotenv').config()
@@ -8,7 +11,7 @@ const app = express()
 
 // ROUTES
 app.get('/', (req, res) => {
-    res.send('Welcome to an Awesome App about Breads. This is the initial server point')
+    res.send(`Welcome to an Awesome App about Breads. This is the initial server point. Use this link and go to the main page. <h2>http://localhost:${process.env.PORT}/breads</h2>`)
   })
 //DEPENDENCIES
 let methodOverride = require('method-override')
@@ -37,3 +40,6 @@ app.listen(PORT, () => {
   console.log('nomming at port', PORT);
 })
 
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, 
+  () => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+)
