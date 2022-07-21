@@ -10,4 +10,24 @@ baker.get('/data/seed', (req, res)=>{
     .then(res.redirect('/breads'))
 })
 
+//Index route
+baker.get('/', (req, res) =>{
+    Baker.find()
+    .populate('breads')
+    .then((foundBakers)=>{
+        res.send(foundBakers)
+    })
+})
+
+//Show baker Route
+baker.get('/:id', (req, res)=>{
+    Baker.findById(req.params.id)
+    .populate('breads')
+    .then((foundBaker)=>{
+        res.render('bakerShow', {
+            baker: foundBaker
+        })
+    })
+})
+
 module.exports = baker

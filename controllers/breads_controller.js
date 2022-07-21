@@ -3,19 +3,22 @@ const breads = express.Router()
 const Bread = require('../models/bread.js')
 let Baker = require('../models/baker.js')
 
-// INDEX
+// INDEX route
 breads.get('/', (req, res) => {
+  Baker.find()
+  .then((foundBakers)=>{
   Bread.find()
-  .then(foundBreads => {
+  .then((foundBreads) => {
     //console.log(foundBreads)
     res.render('Index',
     {
       breads: foundBreads,
+      bakers: foundBakers,
       title: 'Index Page'
     })
     
+    })
   })
-
  })
 
 // CREATE
