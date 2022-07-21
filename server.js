@@ -28,6 +28,10 @@ app.use(methodOverride('_method'))
   // Breads
   const breadsController = require('./controllers/breads_controller.js')
   app.use('/breads', breadsController)
+
+  //Bakers
+  let bakersController = require('./controllers/bakers_controller.js')
+  app.use('/bakers', bakersController)
   
   // 404 Page
 app.get('*', (req, res) => {
