@@ -21,7 +21,7 @@ breads.get('/', (req, res) => {
   })
  })
 
-// CREATE
+// CREATE route
 breads.post('/', (req, res) => {
   if (!req.body.image) {
     req.body.image = undefined
